@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Instalar Certificado</title>
+
+<style>
+body{
+    background:#0f0f0f;
+    color:white;
+    font-family:Arial;
+    text-align:center;
+    margin-top:100px;
+}
+
+.botao{
+    background:#00c3ff;
+    color:white;
+    padding:15px 40px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.botao:hover{
+    background:#0099cc;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Instalar Certificado</h1>
+<p>Clique no botão abaixo para instalar o perfil.</p>
+
+<a href="certificado.pem" download>
+<button class="botao">Baixar / Instalar Certificado</button>
+</a>
+
+</body>
+</html>

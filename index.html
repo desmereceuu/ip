@@ -31,39 +31,32 @@ z-index:0;
 }
 
 .container{
-
 position:relative;
 z-index:2;
 text-align:center;
-
+padding:20px;
 }
 
 .discord{
-
 color:#3b82f6;
 font-size:14px;
 letter-spacing:2px;
-margin-bottom:20px;
-
+margin-bottom:25px;
 }
 
 .label{
-
 color:#888;
 font-size:12px;
 letter-spacing:3px;
-
 }
 
 .ip{
-
 font-size:48px;
 margin:15px 0;
-
+word-break:break-all;
 }
 
 button{
-
 padding:12px 30px;
 border:1px solid #7c3aed;
 background:transparent;
@@ -71,14 +64,24 @@ color:#c084fc;
 border-radius:6px;
 cursor:pointer;
 transition:0.3s;
-
+margin:6px;
 }
 
 button:hover{
-
 background:#7c3aed;
 color:white;
+}
 
+/* botão certificado */
+
+.cert{
+border-color:#22c55e;
+color:#22c55e;
+}
+
+.cert:hover{
+background:#22c55e;
+color:black;
 }
 
 /* MOBILE */
@@ -90,7 +93,7 @@ font-size:32px;
 }
 
 button{
-width:70%;
+width:80%;
 }
 
 }
@@ -111,28 +114,46 @@ width:70%;
 
 <div class="ip" id="ip">Carregando...</div>
 
-<button onclick="copiarIP()">COPIAR</button>
+<button onclick="copiarIP()">COPIAR IP</button>
+
+<br>
+
+<a href="certificado.pem">
+<button class="cert">INSTALAR CERTIFICADO</button>
+</a>
 
 </div>
 
 <script>
 
-let ipAtual="";
+let ipAtual=""
 
-fetch("https://api.ipify.org?format=json")
-.then(res=>res.json())
-.then(data=>{
+async function pegarIP(){
 
-ipAtual=data.ip
-document.getElementById("ip").innerText=data.ip
+try{
 
-})
+const res = await fetch("https://api.ipify.org?format=json")
+const data = await res.json()
+
+ipAtual = data.ip
+document.getElementById("ip").innerText = ipAtual
+
+}catch{
+
+document.getElementById("ip").innerText = "Erro ao carregar IP"
+
+}
+
+}
 
 function copiarIP(){
 
 navigator.clipboard.writeText(ipAtual)
+alert("IP copiado!")
 
 }
+
+pegarIP()
 
 particlesJS("particles-js",{
 
